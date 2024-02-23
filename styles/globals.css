@@ -2,32 +2,143 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    color: var(--text-black);
+  }
+  
+  html,
+  body {
+    font-family: 'Public Sans', sans-serif;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  ul { 
+    list-style-type: none;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  input, textarea, textarea::placeholder {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 1rem;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  #__next {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer components {
+  .section-fluid {
+    @apply relative px-2 md:px-8 py-4;
+  }
+
+  .section-inner {
+    @apply mx-auto;
+    max-width: 1400px;
+  }
+
+  .section-title {
+    @apply text-2xl md:text-[2rem];
+  }
+
+  .section-subtitle { 
+    @apply text-sm md:text-base;
+  }
+
+  .product-card {
+    @apply shadow-soft flex flex-col w-full overflow-hidden bg-white;
+    border-radius: 8px;
+    border: 1px solid rgba(25, 141, 179, 0.1);
+  }
+
+  .product-grid {
+    @apply mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8;
+  }
+
+  .category-card {
+    @apply rounded-lg shadow-soft grid gap-3;
+    padding: 10px;
+    grid-template-columns: 75px 1fr;
+  }
+
+  section .mySwiper {
+    padding: 1rem 0 3rem 0;
+  }
+
+  .swiper-nav-btn {
+    @apply absolute top-1/2 -translate-y-3/4 grid items-center w-[55px] h-[55px] cursor-pointer z-[200] rounded-full bg-custom-gray opacity-50 transition hover:opacity-100;
+  }
+
+  .service-card {
+    @apply relative h-[400px] w-full sm:w-[48%] md:w-[32%] sm:h-[500px] mb-12 rounded-xl overflow-hidden p-[25px] flex flex-col justify-end gap-[25px]; 
+  }
+
+  .service-card > * {
+    @apply text-white;
+  }
+
+  .input-border {
+    border: 1px solid;
+    @apply border-zinc-200;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+  .gradient {
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 80%);
+  }
+  .basic-gradient {
+    background: linear-gradient(90deg, rgba(25,45,51,1) 0%, rgba(25,141,179,1) 100%);
+  }
+  .floating-box-shadow {
+    box-shadow: 0px 5px 11px 0px rgba(25, 141, 179, 0.1);
+  }
+}
+
+
+
+
+:root {
+  --inner-max-width: 1400px;
+  --border-radius: 12px;
+  
+  --gray-bg: #f1f1f1;
+  --alt-soft-bg: #f9fafb;
+  --light-shadow: 0px 2px 10px 0px rgba(146, 157, 161, 0.2);
+  --basic-gradient: linear-gradient(90deg, rgba(25,45,51,1) 0%, rgba(25,141,179,1) 100%);
+
+  --blue: #198db3;
+  --dark-blue: #27809d;
+  --contrast: #16FFC7;
+  --text-black: #404040;
+  --text-light: #A2A4A5;
+  --soft-gray: #E2E2E2;
+  --input-border: #cfd7d9;
+  --confirm: #54db23;
+  --alert: #e17979;
+  --comp: #e8e142;
+
+  --button-padding: 10px 20px;
 }
