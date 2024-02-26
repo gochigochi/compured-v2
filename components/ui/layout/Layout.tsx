@@ -1,7 +1,15 @@
+import Nav from "./nav/Nav"
 
-const Layout = () => {
+type PropsTypes = {
+    children: React.ReactNode
+}
+
+const Layout = ({ children } : PropsTypes) => {
   return (
-    <div>Layout</div>
+    <div>
+        <Nav />
+        {children}
+    </div>
   )
 }
 
