@@ -1,16 +1,9 @@
-import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { getProductsByCategory } from "@/utils/getProductsByCategory"
-import { Categories as Categs, Products } from '@/types'
-import FeaturedProducts from '@/components/blocks/featured_products/FeaturedProducts'
-// import SEO from '@/components/seo/SEO'
-// import BannerCarousel from '@/components/banner_carousel/BannerCarousel'
-// import Featured from '@/components/featured/Featured'
-// import Categories from '@/components/home/categories/Categories'
-// import Services from '@/components/home/services/Services'
-// const Clients = dynamic(() => import('../components/home/clients/Clients'))
-// const Contact = dynamic(() => import('../components/contact/Contact'))
+import { Products } from '@/types'
+import Home from '@/components/pages/home/Home'
+import SEO from '@/components/blocks/seo/SEO'
 
 export const getStaticProps = (async () => {
 
@@ -38,20 +31,8 @@ export default function HomePage({
         <meta name="viewport" content="width=device-width, initial-scale=1" key="Compured" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <SEO /> */}
-      <div className="section-fluid">
-        <div className="section-inner flex flex-col gap-20">
-          <FeaturedProducts products={products} />
-
-
-          {/* <BannerCarousel />
-          <Featured products={products} />
-          <Categories />
-          <Services />
-          <Clients />
-          <Contact /> */}
-        </div>
-      </div>
+      <SEO />
+      <Home products={products} />
     </>
   )
 }
