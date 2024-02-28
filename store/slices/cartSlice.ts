@@ -8,7 +8,8 @@ type CartState = {
     products: CartProduct[]
 }
 
-const initialState: CartState = getLocalStorage("cart") || { products: [] }
+// const initialState: CartState = getLocalStorage("cart") || { products: [] }
+const initialState: CartState = { products: [] }
 
 export const cart = createSlice({
     name: "cart",
